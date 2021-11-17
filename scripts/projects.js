@@ -1,47 +1,64 @@
 const wrapper = document.querySelector(".project-wrapper");
-const projects = ["project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3","project1", "project2", "project3",];
-const multiplier = document.querySelector(".angle-multiplier");
+const centerX = wrapper.offsetWidth/2;
+const centerY = wrapper.offsetHeight/2;
 
-renderProjects();
+const projectCount = 300;
+const maxFollow = 1000;
+var a = 30;
 
 function renderProjects() {
-    const centerX = wrapper.offsetWidth/2;
-    const centerY = wrapper.offsetHeight/2;
-    console.log(centerX);
-    projects.forEach((project, index) => {
-            let projectElement = document.createElement("div");
-            projectElement.classList.add("project");
-            
-            let angle = getFibonacciAt(index)/multiplier.value;
-            let dist = index*2;
-
-            let xCart = dist*Math.cos(angle);
-            let yCart = dist*Math.sin(angle);
-
-            
-            projectElement.style.top = (centerY - yCart) + "px";
-            projectElement.style.left = (centerX - xCart) + "px";
-            
-            console.log(angle, index);
-            wrapper.appendChild(projectElement);
-        }
-    );
-}
-
-function getFibonacciAt(n)
-{
-    if (n == 0) return 0;
-    if (n == 1) return 1;
-
-    let prevPrev = 0;
-    let prev = 1;
-    let result = 0;
-
-    for (let i = 2; i <= n; i++)
-    {
-        result = prev + prevPrev;
-        prevPrev = prev;
-        prev = result;
+    while(wrapper.firstChild){
+        wrapper.removeChild(wrapper.firstChild);
     }
-    return result;
+    projects = [];
+
+    for(let index = 0; index < projectCount; index++){
+        let projectElement = document.createElement("div");
+        projectElement.classList.add("project");
+
+        let angle = index;
+        let dist = a * Math.sqrt(angle);
+
+        let xCart = dist*Math.cos(angle);
+        let yCart = dist*Math.sin(angle);
+
+        projectElement.style.top = (centerY - yCart) + "px";
+        projectElement.style.left = (centerX - xCart) + "px";
+
+        let project = {
+            top: (centerY - yCart),
+            left: (centerX - xCart)
+        }
+
+        wrapper.appendChild(projectElement);
+        projects.push(project);
+    }
 }
+
+function initProjectViewer(){
+    renderProjects();
+
+    window.addEventListener("mousemove", (e) => {
+        let nX = e.clientX - centerX;
+        let nY = e.clientY - centerY;
+
+        document.querySelectorAll(".project").forEach((project, index) => {
+            // let oldX = project.style.left.substring(0, project.style.left.length - 2);
+            // let oldY = project.style.top.substring(0, project.style.top.length - 2);
+            let oldX = projects[index].left;
+            let oldY = projects[index].top;
+            let closeness = 1 - (index/projectCount);
+
+            let newX = +oldX + (maxFollow / nX * closeness);
+            let newY = +oldY + (maxFollow / nY * closeness);
+
+            console.log((maxFollow / nX * closeness) + " " + oldX);
+
+            project.style.left = newX + "px";
+            project.style.top = newY + "px";
+        });
+    });
+
+}
+
+initProjectViewer();

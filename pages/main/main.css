@@ -6,6 +6,7 @@
 
 body {
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .project-wrapper {
@@ -15,12 +16,14 @@ body {
     height: 100vh;
     border: solid 2px rgb(168, 151, 151);
     background-color: rgb(230, 240, 239);
+    /* overflow-x: hidden;
+    overflow-y: hidden; */
 }
 
 .project {
     background-color: lightseagreen;
-    width: 5px;
-    height: 5px;
-    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
     position: absolute;
 }
