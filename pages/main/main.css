@@ -15,7 +15,7 @@ body {
     width: 100vw;
     height: 100vh;
     /* border: solid 2px rgb(168, 151, 151); */
-    background-color: rgb(245, 241, 241);
+    background-color: rgb(247, 245, 245);
     overflow-x: hidden;
     overflow-y: hidden;
     /* filter: invert(1); */
@@ -34,4 +34,23 @@ body {
 @keyframes fadeIn {
 0% {opacity:0;}
 100% {opacity:1;}
+}
+
+#spotter {
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.cta {
+    width: 100px;
+    height: 100px;
+    border-radius: 150px;
+    background-color: rgb(190, 190, 190);
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
 }
