@@ -5,7 +5,7 @@ const centerY = wrapper.offsetHeight/2;
 const smile = [95, 46, 56, 62, 68, 74, 55, 36, 17];
 
 const projectCount = 500;
-const maxFollow = 1900;
+const maxFollow = 200;
 var a = 7;
 var rotation = 0;
 
