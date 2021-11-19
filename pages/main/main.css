@@ -18,10 +18,11 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
     /* filter: invert(1); */
+    /* cursor: none; */
 }
 
 .project {
-    background-color: hsl(0, 0%, 19%); 
+    background-color: hsl(0, 0%, 64%); 
     /* rgb(255, 0, 234); */
     width: 5px;
     height: 5px;
@@ -41,6 +42,7 @@ body {
     left: 0;
     cursor: pointer;
     user-select: none;
+    display: none;
 }
 
 .cta h4 {
