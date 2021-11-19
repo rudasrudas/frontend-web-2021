@@ -15,7 +15,7 @@ body {
     width: 100vw;
     height: 100vh;
     /* border: solid 2px rgb(168, 151, 151); */
-    background-color: rgb(247, 245, 245);
+    /* background-color: rgb(247, 245, 245); */
     overflow-x: hidden;
     overflow-y: hidden;
     /* filter: invert(1); */
@@ -48,9 +48,23 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 150px;
-    background-color: rgb(190, 190, 190);
+    /* border: solid 5px hsl(0, 0%, 19%);  */
+    /* background-color: rgb(190, 190, 190); */
     position: absolute;
     opacity: 0;
     top: 0;
     left: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cta h4 {
+    text-transform: uppercase;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }

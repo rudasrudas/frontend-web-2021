@@ -99,6 +99,10 @@ function initProjectViewer(){
     renderProjects();
     loadProject();
 
+    cta.addEventListener("click", (e) => {
+        unloadProject();
+    })
+
     window.addEventListener("mousemove", (e) => {
         nX = e.clientX - centerX;
         nY = e.clientY - centerY;
@@ -145,6 +149,21 @@ function loadProject(){
         }
         renderProjects();
     }, 1);
+}
+
+function unloadProject(){
+    const interval = setInterval(() => {
+        rotation += rotationIntensity;
+        a += 10;
+        console.log(a);
+        if(a >= 100){
+            clearInterval(interval);
+            a = 100;
+            wrapper.style.opacity = 0;
+            window.location = "/#/about";
+        }
+        renderProjects();
+    }, 10);
 }
 
 function sleep(ms) {
