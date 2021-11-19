@@ -27,14 +27,15 @@ function initProjectViewer(){
         unloadProject();
     })
 
-    // window.addEventListener("mousemove", (e) => {
-    //     nX = e.clientX - centerX;
-    //     nY = e.clientY - centerY;
-    //     mX = e.clientX;
-    //     mY = e.clientY;
+    window.addEventListener("mousemove", (e) => {
+        // nX = e.clientX - centerX;
+        // nY = e.clientY - centerY;
+        // mX = e.clientX;
+        // mY = e.clientY;
 
-    //     updateProjectPosition();
-    // });
+        // updateProjectPosition();
+        generateNewPosition();
+    });
     updateProjectPosition();
 }
 
