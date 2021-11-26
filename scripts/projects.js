@@ -4,10 +4,10 @@ const centerX = wrapper.offsetWidth/2;
 const centerY = wrapper.offsetHeight/2;
 
 const projectCount = 1000;
-const maxFollow = 850;
+const maxFollow = 250;
 const rotationIntensity = 50;
 let projectElements;
-let a = 12;
+let a = 7;
 let rotation = -1000;
 let isOpen = false;
 let nX = 0;
@@ -28,13 +28,13 @@ function initProjectViewer(){
     })
 
     window.addEventListener("mousemove", (e) => {
-        // nX = e.clientX - centerX;
-        // nY = e.clientY - centerY;
-        // mX = e.clientX;
-        // mY = e.clientY;
+        nX = e.clientX - centerX;
+        nY = e.clientY - centerY;
+        mX = e.clientX;
+        mY = e.clientY;
 
-        // updateProjectPosition();
-        generateNewPosition();
+        updateProjectPosition();
+        // generateNewPosition();
     });
     updateProjectPosition();
 }
@@ -107,12 +107,12 @@ function updateProjectPosition(){
 
     const distanceFromCenter = Math.sqrt(Math.pow(mX - pcX, 10) + Math.pow(mY - pcY, 2));
 
-    // if(distanceFromCenter < 40 && !isOpen){
-    //     openProject();
-    // }
-    // else if (distanceFromCenter >= 40 && isOpen){
-    //     closeProject();
-    // }
+    if(distanceFromCenter < 100 && !isOpen){
+        openProject();
+    }
+    else if (distanceFromCenter >= 100 && isOpen){
+        closeProject();
+    }
 
     projectElements.forEach((project, index) => {
         const orgX = projects[index].left;
